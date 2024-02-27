@@ -6,6 +6,10 @@ class ProdutoController {
         return await MongoDatabase.find({}, 'PRODUTO');
     }
 
+    async listarLimitado(limit) {
+        return await MongoDatabase.findLimitado({}, 'PRODUTO', limit);
+    }
+
     async inserirDadosFicticios() {
         const lista = [];
         for (let index = 1; index <= 1000000; index++) {

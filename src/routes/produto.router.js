@@ -7,24 +7,28 @@ const router = express.Router()
 router.get('/produto', (req, res, next) => {
     ProdutoController.listar()
         .then(
-            (response) => {
-                res.json(response);
-            },
-            (error) => {
-                next(error);
-            });
+            (response) => res.json(response),
+            (error) => next(error)
+        );
+});
+
+// Buscar produtos com limitação
+router.get('/produto/limite/:limit', (req, res, next) => {
+    const { limit } = req.params;
+    ProdutoController.listarLimitado(limit)
+        .then(
+            (response) => res.json(response),
+            (error) => next(error)
+        );
 });
 
 // Inserir dados ficticios para consultas
 router.get('/produto/dados-ficticios', (req, res, next) => {
     ProdutoController.inserirDadosFicticios()
         .then(
-            (response) => {
-                res.json(response);
-            },
-            (error) => {
-                next(error);
-            });
+            (response) => res.json(response),
+            (error) => next(error)
+        );
 });
 
 export default router;

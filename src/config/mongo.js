@@ -23,6 +23,18 @@ class MongoDatabase {
         }
     }
 
+    findLimitado(filtro, collection, limit) {
+        try {
+            return this.conexao
+                .collection(collection)
+                .find(filtro)
+                .limit(Number(limit))
+                .toArray();
+        } catch (error) {
+            throw error;
+        }
+    }
+
     insertMany(dados, collection) {
         try {
             return this.conexao.collection(collection).insertMany(dados);
