@@ -23,5 +23,13 @@ class MongoDatabase {
         }
     }
 
+    insertMany(dados, collection) {
+        try {
+            return this.conexao.collection(collection).insertMany(dados);
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 export default new MongoDatabase();
