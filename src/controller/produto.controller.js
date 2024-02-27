@@ -10,9 +10,9 @@ class ProdutoController {
         return await MongoDatabase.findLimitado({}, 'PRODUTO', limit);
     }
 
-    async inserirDadosFicticios() {
+    async inserirDadosFicticios(quantidade) {
         const lista = [];
-        for (let index = 1; index <= 1000000; index++) {
+        for (let index = 1; index <= quantidade; index++) {
             console.log('Inserindo produto ' + index);
             const produto = { codigo: 'P' + index, descricao: 'Produto' + index };
             lista.push(produto);

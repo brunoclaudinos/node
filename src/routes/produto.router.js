@@ -23,8 +23,9 @@ router.get('/produto/limite/:limit', (req, res, next) => {
 });
 
 // Inserir dados ficticios para consultas
-router.get('/produto/dados-ficticios', (req, res, next) => {
-    ProdutoController.inserirDadosFicticios()
+router.get('/produto/dados-ficticios/:quantidade', (req, res, next) => {
+    const { quantidade } = req.params;
+    ProdutoController.inserirDadosFicticios(quantidade)
         .then(
             (response) => res.json(response),
             (error) => next(error)
